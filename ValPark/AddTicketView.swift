@@ -1,31 +1,33 @@
 import SwiftUI
-import SwiftData
 import PhotosUI
 
 struct AddTicketView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) private var dismiss
-    @Environment(AppSettings.self) private var appSettings
+    @Environment(\.dismiss)              private var dismiss
+    @Environment(TicketStore.self)       private var ticketStore
+    @Environment(OrganizationStore.self) private var orgStore
+    @Environment(FirebaseAuthManager.self) private var auth
     @Environment(LocalizationManager.self) private var lm
 
     @State private var firstName = ""
-    @State private var lastName = ""
+    @State private var lastName  = ""
     @State private var phoneNumber = ""
-    @State private var vehicle = ""
-    @State private var selectedZone = ""
+    @State private var vehicle   = ""
+    @State private var selectedZone   = ""
     @State private var selectedTiming: PaymentTiming = .payAfter
     @State private var selectedMethod: PaymentMethod = .cash
-    @State private var amount = ""
-    @State private var notes = ""
+    @State private var amount    = ""
+    @State private var notes     = ""
     @State private var startTime = Date()
-    @State private var endTime = Date().addingTimeInterval(3600)
+    @State private var endTime   = Date().addingTimeInterval(3600)
 
-    @State private var showZonePicker = false
+    @State private var showZonePicker   = false
     @State private var showTimingPicker = false
     @State private var showMethodPicker = false
     @State private var showSuccessAlert = false
     @State private var selectedPhotoItems: [PhotosPickerItem] = []
     @State private var selectedPhotos: [UIImage] = []
+
+    private var zones: [String] { orgStore.currentOrg?.parkingZones ?? [] }
 
     private var isValid: Bool {
         !firstName.isEmpty && !lastName.isEmpty && !phoneNumber.isEmpty &&
@@ -61,8 +63,13 @@ struct AddTicketView: View {
 
                         // Parking Zone
                         SectionHeader(title: lm["add.zone_section"])
-                        PickerButton(label: selectedZone.isEmpty ? lm["add.zone_select"] : selectedZone,
-                                     isEmpty: selectedZone.isEmpty) { showZonePicker = true }
+                        if zones.isEmpty {
+                            Text(lm["add.zone_none"])
+                                .font(.caption).foregroundStyle(.orange)
+                        } else {
+                            PickerButton(label: selectedZone.isEmpty ? lm["add.zone_select"] : selectedZone,
+                                         isEmpty: selectedZone.isEmpty) { showZonePicker = true }
+                        }
 
                         // Payment Timing
                         SectionHeader(title: lm["add.timing_section"])
@@ -114,18 +121,18 @@ struct AddTicketView: View {
                                 .padding(.leading, 10)
                         }
 
-                        // Photos
+                        // Photos (picked locally; not persisted to cloud in this version)
                         SectionHeader(title: "\(lm["add.photos_section"]) (\(selectedPhotos.count)/5)")
                         HStack(spacing: 12) {
                             PhotosPicker(selection: $selectedPhotoItems,
                                          maxSelectionCount: max(0, 5 - selectedPhotos.count),
                                          matching: .images) {
-                                PhotoButtonLabel(icon: "camera",               label: lm["add.camera"])
+                                PhotoButtonLabel(icon: "camera",             label: lm["add.camera"])
                             }
                             PhotosPicker(selection: $selectedPhotoItems,
                                          maxSelectionCount: max(0, 5 - selectedPhotos.count),
                                          matching: .images) {
-                                PhotoButtonLabel(icon: "photo.on.rectangle",   label: lm["add.gallery"])
+                                PhotoButtonLabel(icon: "photo.on.rectangle", label: lm["add.gallery"])
                             }
                             ForEach(selectedPhotos, id: \.self) { img in
                                 Image(uiImage: img).resizable().scaledToFill()
@@ -182,12 +189,12 @@ struct AddTicketView: View {
             .alert(lm["add.success_title"], isPresented: $showSuccessAlert) {
                 Button(lm["add.done"]) { dismiss() }
             } message: {
-                Text("\(firstName)\(lm["add.success_title"].isEmpty ? "'s vehicle has been checked in." : "'s vehicle has been checked in.")")
+                Text("\(firstName)'s vehicle has been checked in.")
             }
         }
         .sheet(isPresented: $showZonePicker) {
             PickerSheet(title: lm["picker.zone_title"],
-                        options: appSettings.parkingZones,
+                        options: zones,
                         selected: $selectedZone)
         }
         .sheet(isPresented: $showTimingPicker) {
@@ -213,20 +220,31 @@ struct AddTicketView: View {
     }
 
     private func checkIn() {
-        let ticket = ParkingTicket(
-            customerFirstName: firstName, customerLastName: lastName,
-            phoneNumber: phoneNumber, vehicle: vehicle,
-            parkingZone: selectedZone, paymentTiming: selectedTiming,
-            paymentMethod: selectedMethod, amount: Double(amount) ?? 0.0, notes: notes)
-        ticket.checkedInAt    = startTime
+        guard let orgId = orgStore.currentOrg?.id,
+              let uid   = auth.currentUser?.uid else { return }
+
+        var ticket = ParkingTicket(
+            customerFirstName: firstName,
+            customerLastName:  lastName,
+            phoneNumber:       phoneNumber,
+            vehicle:           vehicle,
+            parkingZone:       selectedZone,
+            paymentTiming:     selectedTiming,
+            paymentMethod:     selectedMethod,
+            amount:            Double(amount) ?? 0.0,
+            notes:             notes,
+            createdBy:         uid,
+            orgId:             orgId
+        )
+        ticket.checkedInAt     = startTime
         ticket.expectedEndTime = endTime
-        modelContext.insert(ticket)
-        try? modelContext.save()
+
+        ticketStore.create(ticket)
         showSuccessAlert = true
     }
 }
 
-// MARK: - Shared sub-views (used in AddTicketView)
+// MARK: - Shared sub-views (PickerSheet moved here; SectionHeader / FormTextField / PickerButton in AddTicketView)
 
 struct SectionHeader: View {
     let title: String

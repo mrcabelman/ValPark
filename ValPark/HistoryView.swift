@@ -1,21 +1,17 @@
 import SwiftUI
-import SwiftData
 
 struct HistoryView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(TicketStore.self)       private var ticketStore
     @Environment(LocalizationManager.self) private var lm
-    @Query(filter: #Predicate<ParkingTicket> {
-        $0.statusRaw == "Delivered" || $0.statusRaw == "Cancelled"
-    }, sort: \ParkingTicket.checkedInAt, order: .reverse)
-    private var tickets: [ParkingTicket]
 
-    @State private var searchText = ""
-    @State private var showReport = false
+    @State private var searchText  = ""
+    @State private var showReport  = false
 
     private var filtered: [ParkingTicket] {
-        guard !searchText.isEmpty else { return tickets }
+        let all = ticketStore.historyTickets
+        guard !searchText.isEmpty else { return all }
         let q = searchText.lowercased()
-        return tickets.filter {
+        return all.filter {
             $0.customerFullName.lowercased().contains(q) ||
             $0.vehicle.lowercased().contains(q)
         }
@@ -73,7 +69,7 @@ struct HistoryView: View {
             }
         }
         .sheet(isPresented: $showReport) {
-            ReportSheetView(allTickets: tickets)
+            ReportSheetView(allTickets: ticketStore.historyTickets)
         }
     }
 }

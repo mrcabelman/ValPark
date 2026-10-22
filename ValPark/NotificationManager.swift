@@ -23,6 +23,8 @@ enum NotificationManager {
             .requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
     }
 
+    // MARK: - Ticket reminders
+
     static func scheduleReminders(for ticket: ParkingTicket) {
         guard let endTime = ticket.expectedEndTime else { return }
         let center    = UNUserNotificationCenter.current()
@@ -43,7 +45,7 @@ enum NotificationManager {
             schedule(id: reminderID(ticket), content: content, at: reminderTime, center: center)
         }
 
-        // Expiry
+        // Expiry notification
         if endTime > now {
             let content   = UNMutableNotificationContent()
             content.title = isSpanish ? "Parqueo Vencido" : "Parking Expired"
@@ -60,6 +62,25 @@ enum NotificationManager {
             .removePendingNotificationRequests(withIdentifiers: [reminderID(ticket), expiredID(ticket)])
     }
 
+    // MARK: - Join request notification (delivered to this device if the local user is an admin)
+
+    static func scheduleJoinRequestNotification(requesterName: String, orgName: String) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else { return }
+            let isSpanish = UserDefaults.standard.string(forKey: "appLanguage") == "Español"
+            let content = UNMutableNotificationContent()
+            content.title = isSpanish ? "Solicitud de Acceso" : "Join Request"
+            content.body  = isSpanish
+                ? "\(requesterName) quiere unirse a \(orgName)"
+                : "\(requesterName) wants to join \(orgName)"
+            content.sound = .default
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+            let req = UNNotificationRequest(identifier: "joinRequest-\(UUID().uuidString)",
+                                            content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(req)
+        }
+    }
+
     // MARK: - Private helpers
 
     private static func schedule(id: String, content: UNMutableNotificationContent,
@@ -69,6 +90,7 @@ enum NotificationManager {
         center.add(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
     }
 
-    private static func reminderID(_ t: ParkingTicket) -> String { "parkcol-\(t.id)-reminder" }
-    private static func expiredID(_ t: ParkingTicket)  -> String { "parkcol-\(t.id)-expired" }
+    // ticket.id is now a String UUID
+    private static func reminderID(_ t: ParkingTicket) -> String { "valpark-\(t.id)-reminder" }
+    private static func expiredID(_ t: ParkingTicket)  -> String { "valpark-\(t.id)-expired"  }
 }

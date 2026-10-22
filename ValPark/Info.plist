@@ -16,22 +16,19 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleVersion</key>
-	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<!-- Replace with your reversed Google OAuth Client ID            -->
-			<!-- e.g. if client ID is "12345-abc.apps.googleusercontent.com" -->
-			<!-- reversed = "com.googleusercontent.apps.12345-abc"           -->
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>REPLACE_WITH_REVERSED_CLIENT_ID</string>
-			</array>
 			<key>CFBundleURLName</key>
 			<string>GoogleSignIn</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.336923762606-nrv9ba1rh8kjo67621er61ho8of6kjfb</string>
+			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -1,22 +1,19 @@
 import SwiftUI
-import SwiftData
 
 struct ActiveView: View {
-    @Environment(\.modelContext) private var modelContext
+    @Environment(TicketStore.self)       private var ticketStore
+    @Environment(OrganizationStore.self) private var orgStore
     @Environment(LocalizationManager.self) private var lm
-    @Query(filter: #Predicate<ParkingTicket> {
-        $0.statusRaw != "Delivered" && $0.statusRaw != "Cancelled"
-    }, sort: \ParkingTicket.checkedInAt, order: .reverse)
-    private var tickets: [ParkingTicket]
 
-    @State private var showAddTicket = false
+    @State private var showAddTicket   = false
+    @State private var showOrgSwitcher = false
 
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottomTrailing) {
                 Color.black.ignoresSafeArea()
 
-                if tickets.isEmpty {
+                if ticketStore.activeTickets.isEmpty {
                     VStack {
                         Spacer()
                         Text(lm["active.empty"])
@@ -27,7 +24,7 @@ struct ActiveView: View {
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 10) {
-                            ForEach(tickets) { ticket in
+                            ForEach(ticketStore.activeTickets) { ticket in
                                 NavigationLink(destination: CarDetailsView(ticket: ticket)) {
                                     TicketRowView(ticket: ticket)
                                 }
@@ -40,6 +37,7 @@ struct ActiveView: View {
                     }
                 }
 
+                // FAB
                 Button { showAddTicket = true } label: {
                     Image(systemName: "plus")
                         .font(.title2.weight(.semibold))
@@ -51,12 +49,13 @@ struct ActiveView: View {
                 .padding(.trailing, 20)
                 .padding(.bottom, 24)
             }
-            .navigationTitle(lm["tab.active"])
+            .navigationTitle(orgStore.currentOrg?.name ?? lm["tab.active"])
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                // Active ticket count
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if !tickets.isEmpty {
-                        Text("\(tickets.count)")
+                    if !ticketStore.activeTickets.isEmpty {
+                        Text("\(ticketStore.activeTickets.count)")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(.black)
                             .padding(.horizontal, 8)
@@ -65,13 +64,72 @@ struct ActiveView: View {
                             .clipShape(Capsule())
                     }
                 }
+                // Org switcher (only visible when user has multiple orgs)
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if orgStore.myOrgs.count > 1 {
+                        Button {
+                            showOrgSwitcher = true
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "building.2")
+                                Image(systemName: "chevron.down")
+                                    .font(.caption2)
+                            }
+                            .foregroundStyle(.green)
+                        }
+                    }
+                }
             }
         }
-        .sheet(isPresented: $showAddTicket) {
-            AddTicketView()
-        }
+        .sheet(isPresented: $showAddTicket)   { AddTicketView() }
+        .sheet(isPresented: $showOrgSwitcher) { OrgSwitcherSheet() }
     }
 }
+
+// MARK: - Org switcher sheet
+
+struct OrgSwitcherSheet: View {
+    @Environment(OrganizationStore.self) private var orgStore
+    @Environment(LocalizationManager.self) private var lm
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(UIColor.systemGray6).ignoresSafeArea()
+                List(orgStore.myOrgs) { org in
+                    Button {
+                        orgStore.selectOrg(org)
+                        dismiss()
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(org.name).foregroundStyle(.primary).font(.headline)
+                                Text(org.myRole == .admin ? lm["orgs.role_admin"] : lm["orgs.role_member"])
+                                    .font(.caption).foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            if orgStore.currentOrg?.id == org.id {
+                                Image(systemName: "checkmark").foregroundStyle(.green)
+                            }
+                        }
+                    }
+                }
+                .listStyle(.insetGrouped).scrollContentBackground(.hidden)
+            }
+            .navigationTitle(lm["orgs.switcher_title"])
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(lm["picker.done"]) { dismiss() }.foregroundStyle(.green)
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+}
+
+// MARK: - TicketRowView (unchanged from original)
 
 struct TicketRowView: View {
     let ticket: ParkingTicket
@@ -121,6 +179,8 @@ struct TicketRowView: View {
         return "\(s/3600)h"
     }
 }
+
+// MARK: - StatusBadge (unchanged from original)
 
 struct StatusBadge: View {
     let status: TicketStatus

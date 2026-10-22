@@ -3,7 +3,7 @@ import SwiftUI
 struct ReportSheetView: View {
     let allTickets: [ParkingTicket]
     @Environment(\.dismiss) private var dismiss
-    @Environment(AppSettings.self) private var appSettings
+    @Environment(OrganizationStore.self) private var orgStore
     @Environment(LocalizationManager.self) private var lm
 
     @State private var selectedZone = ""
@@ -17,6 +17,8 @@ struct ReportSheetView: View {
     }()
     @State private var reportGenerated = false
     @State private var showZonePicker  = false
+
+    private var zones: [String] { orgStore.currentOrg?.parkingZones ?? [] }
 
     private var zoneLabel: String {
         selectedZone.isEmpty ? lm["report.all_zones"] : selectedZone
@@ -100,10 +102,10 @@ struct ReportSheetView: View {
                         if reportGenerated {
                             let s = stats
                             HStack(spacing: 10) {
-                                StatCell(value: "\(s.total)",                          label: lm["report.total"],     color: .white)
-                                StatCell(value: "\(s.delivered)",                      label: lm["report.delivered"], color: .green)
-                                StatCell(value: "\(s.cancelled)",                      label: lm["report.cancelled"], color: .red)
-                                StatCell(value: String(format: "$%.2f", s.revenue),    label: lm["report.revenue"],   color: .white)
+                                StatCell(value: "\(s.total)",                       label: lm["report.total"],     color: .white)
+                                StatCell(value: "\(s.delivered)",                   label: lm["report.delivered"], color: .green)
+                                StatCell(value: "\(s.cancelled)",                   label: lm["report.cancelled"], color: .red)
+                                StatCell(value: String(format: "$%.2f", s.revenue), label: lm["report.revenue"],   color: .white)
                             }
                             if s.total == 0 {
                                 Text(lm["report.empty"])
@@ -125,9 +127,9 @@ struct ReportSheetView: View {
         }
         .presentationDetents([.medium, .large])
         .sheet(isPresented: $showZonePicker) {
-            let zoneOptions = [lm["report.all_zones"]] + appSettings.parkingZones
+            let zoneOptions = [lm["report.all_zones"]] + zones
             PickerSheet(title: lm["picker.location_title"],
-                        options: [""] + appSettings.parkingZones,
+                        options: [""] + zones,
                         displayOptions: zoneOptions,
                         selected: $selectedZone)
         }

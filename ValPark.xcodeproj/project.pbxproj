@@ -1,0 +1,875 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		946227383063033C00681911 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227183063033C00681911 /* AppSettings.swift */; };
+		946227393063033C00681911 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227223063033C00681911 /* Item.swift */; };
+		9462273A3063033C00681911 /* OrgMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227293063033C00681911 /* OrgMembersView.swift */; };
+		9462273B3063033C00681911 /* OrganizationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227273063033C00681911 /* OrganizationStore.swift */; };
+		9462273C3063033C00681911 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272D3063033C00681911 /* SettingsView.swift */; };
+		9462273D3063033C00681911 /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271C3063033C00681911 /* CloudSyncManager.swift */; };
+		9462273E3063033C00681911 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271A3063033C00681911 /* AuthManager.swift */; };
+		9462273F3063033C00681911 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271E3063033C00681911 /* FirebaseAuthManager.swift */; };
+		946227403063033C00681911 /* OrganizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227263063033C00681911 /* OrganizationModels.swift */; };
+		946227413063033C00681911 /* TicketStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272F3063033C00681911 /* TicketStore.swift */; };
+		946227423063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227363063033C00681911 /* ParkColUITestsLaunchTests.swift */; };
+		946227433063033C00681911 /* OrganizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227283063033C00681911 /* OrganizationsView.swift */; };
+		946227443063033C00681911 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227163063033C00681911 /* ActiveView.swift */; };
+		946227453063033C00681911 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227243063033C00681911 /* MainTabView.swift */; };
+		946227463063033C00681911 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272E3063033C00681911 /* SignUpView.swift */; };
+		946227473063033C00681911 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271D3063033C00681911 /* ContentView.swift */; };
+		946227483063033C00681911 /* AddTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227173063033C00681911 /* AddTicketView.swift */; };
+		946227493063033C00681911 /* ParkColTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227333063033C00681911 /* ParkColTests.swift */; };
+		9462274A3063033C00681911 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271B3063033C00681911 /* CarDetailsView.swift */; };
+		9462274B3063033C00681911 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227203063033C00681911 /* HistoryView.swift */; };
+		9462274C3063033C00681911 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227253063033C00681911 /* NotificationManager.swift */; };
+		9462274D3063033C00681911 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227303063033C00681911 /* VerifyEmailView.swift */; };
+		9462274E3063033C00681911 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227313063033C00681911 /* WelcomeView.swift */; };
+		9462274F3063033C00681911 /* ParkColApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272A3063033C00681911 /* ParkColApp.swift */; };
+		946227503063033C00681911 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272B3063033C00681911 /* ParkingTicket.swift */; };
+		946227513063033C00681911 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227233063033C00681911 /* Localization.swift */; };
+		946227523063033C00681911 /* ReportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272C3063033C00681911 /* ReportSheetView.swift */; };
+		946227533063033C00681911 /* ParkColUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227353063033C00681911 /* ParkColUITests.swift */; };
+		946227543063033C00681911 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9462271F3063033C00681911 /* GoogleService-Info.plist */; };
+		946227553063033C00681911 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946227213063033C00681911 /* Info.plist */; };
+		946227563063033C00681911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946227193063033C00681911 /* Assets.xcassets */; };
+		946227573063033C00681911 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9462271F3063033C00681911 /* GoogleService-Info.plist */; };
+		946227583063033C00681911 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946227213063033C00681911 /* Info.plist */; };
+		946227593063033C00681911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946227193063033C00681911 /* Assets.xcassets */; };
+		9462275A3063033C00681911 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227183063033C00681911 /* AppSettings.swift */; };
+		9462275B3063033C00681911 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227223063033C00681911 /* Item.swift */; };
+		9462275C3063033C00681911 /* OrgMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227293063033C00681911 /* OrgMembersView.swift */; };
+		9462275D3063033C00681911 /* OrganizationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227273063033C00681911 /* OrganizationStore.swift */; };
+		9462275E3063033C00681911 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272D3063033C00681911 /* SettingsView.swift */; };
+		9462275F3063033C00681911 /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271C3063033C00681911 /* CloudSyncManager.swift */; };
+		946227603063033C00681911 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271A3063033C00681911 /* AuthManager.swift */; };
+		946227613063033C00681911 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271E3063033C00681911 /* FirebaseAuthManager.swift */; };
+		946227623063033C00681911 /* OrganizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227263063033C00681911 /* OrganizationModels.swift */; };
+		946227633063033C00681911 /* TicketStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272F3063033C00681911 /* TicketStore.swift */; };
+		946227643063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227363063033C00681911 /* ParkColUITestsLaunchTests.swift */; };
+		946227653063033C00681911 /* OrganizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227283063033C00681911 /* OrganizationsView.swift */; };
+		946227663063033C00681911 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227163063033C00681911 /* ActiveView.swift */; };
+		946227673063033C00681911 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227243063033C00681911 /* MainTabView.swift */; };
+		946227683063033C00681911 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272E3063033C00681911 /* SignUpView.swift */; };
+		946227693063033C00681911 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271D3063033C00681911 /* ContentView.swift */; };
+		9462276A3063033C00681911 /* AddTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227173063033C00681911 /* AddTicketView.swift */; };
+		9462276B3063033C00681911 /* ParkColTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227333063033C00681911 /* ParkColTests.swift */; };
+		9462276C3063033C00681911 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271B3063033C00681911 /* CarDetailsView.swift */; };
+		9462276D3063033C00681911 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227203063033C00681911 /* HistoryView.swift */; };
+		9462276E3063033C00681911 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227253063033C00681911 /* NotificationManager.swift */; };
+		9462276F3063033C00681911 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227303063033C00681911 /* VerifyEmailView.swift */; };
+		946227703063033C00681911 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227313063033C00681911 /* WelcomeView.swift */; };
+		946227713063033C00681911 /* ParkColApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272A3063033C00681911 /* ParkColApp.swift */; };
+		946227723063033C00681911 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272B3063033C00681911 /* ParkingTicket.swift */; };
+		946227733063033C00681911 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227233063033C00681911 /* Localization.swift */; };
+		946227743063033C00681911 /* ReportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272C3063033C00681911 /* ReportSheetView.swift */; };
+		946227753063033C00681911 /* ParkColUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227353063033C00681911 /* ParkColUITests.swift */; };
+		946227763063033C00681911 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227183063033C00681911 /* AppSettings.swift */; };
+		946227773063033C00681911 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227223063033C00681911 /* Item.swift */; };
+		946227783063033C00681911 /* OrgMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227293063033C00681911 /* OrgMembersView.swift */; };
+		946227793063033C00681911 /* OrganizationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227273063033C00681911 /* OrganizationStore.swift */; };
+		9462277A3063033C00681911 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272D3063033C00681911 /* SettingsView.swift */; };
+		9462277B3063033C00681911 /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271C3063033C00681911 /* CloudSyncManager.swift */; };
+		9462277C3063033C00681911 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271A3063033C00681911 /* AuthManager.swift */; };
+		9462277D3063033C00681911 /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271E3063033C00681911 /* FirebaseAuthManager.swift */; };
+		9462277E3063033C00681911 /* OrganizationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227263063033C00681911 /* OrganizationModels.swift */; };
+		9462277F3063033C00681911 /* TicketStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272F3063033C00681911 /* TicketStore.swift */; };
+		946227803063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227363063033C00681911 /* ParkColUITestsLaunchTests.swift */; };
+		946227813063033C00681911 /* OrganizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227283063033C00681911 /* OrganizationsView.swift */; };
+		946227823063033C00681911 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227163063033C00681911 /* ActiveView.swift */; };
+		946227833063033C00681911 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227243063033C00681911 /* MainTabView.swift */; };
+		946227843063033C00681911 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272E3063033C00681911 /* SignUpView.swift */; };
+		946227853063033C00681911 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271D3063033C00681911 /* ContentView.swift */; };
+		946227863063033C00681911 /* AddTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227173063033C00681911 /* AddTicketView.swift */; };
+		946227873063033C00681911 /* ParkColTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227333063033C00681911 /* ParkColTests.swift */; };
+		946227883063033C00681911 /* CarDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462271B3063033C00681911 /* CarDetailsView.swift */; };
+		946227893063033C00681911 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227203063033C00681911 /* HistoryView.swift */; };
+		9462278A3063033C00681911 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227253063033C00681911 /* NotificationManager.swift */; };
+		9462278B3063033C00681911 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227303063033C00681911 /* VerifyEmailView.swift */; };
+		9462278C3063033C00681911 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227313063033C00681911 /* WelcomeView.swift */; };
+		9462278D3063033C00681911 /* ParkColApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272A3063033C00681911 /* ParkColApp.swift */; };
+		9462278E3063033C00681911 /* ParkingTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272B3063033C00681911 /* ParkingTicket.swift */; };
+		9462278F3063033C00681911 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227233063033C00681911 /* Localization.swift */; };
+		946227903063033C00681911 /* ReportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9462272C3063033C00681911 /* ReportSheetView.swift */; };
+		946227913063033C00681911 /* ParkColUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946227353063033C00681911 /* ParkColUITests.swift */; };
+		946227923063033C00681911 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9462271F3063033C00681911 /* GoogleService-Info.plist */; };
+		946227933063033C00681911 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 946227213063033C00681911 /* Info.plist */; };
+		946227943063033C00681911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946227193063033C00681911 /* Assets.xcassets */; };
+		94EB7935308A785D00B99A50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94EB7934308A785D00B99A50 /* GoogleService-Info.plist */; };
+		94EB7936308A785D00B99A50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94EB7934308A785D00B99A50 /* GoogleService-Info.plist */; };
+		94EB7937308A785D00B99A50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94EB7934308A785D00B99A50 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9419C4C32FB4095300C5E094 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9419C4AB2FB4095200C5E094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9419C4B22FB4095200C5E094;
+			remoteInfo = ParkCol;
+		};
+		9419C4CD2FB4095300C5E094 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9419C4AB2FB4095200C5E094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9419C4B22FB4095200C5E094;
+			remoteInfo = ParkCol;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9419C4B32FB4095200C5E094 /* ValPark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValPark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9419C4C22FB4095300C5E094 /* ValParkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValParkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9419C4CC2FB4095300C5E094 /* ValParkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValParkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		946227163063033C00681911 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
+		946227173063033C00681911 /* AddTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTicketView.swift; sourceTree = "<group>"; };
+		946227183063033C00681911 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		946227193063033C00681911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9462271A3063033C00681911 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		9462271B3063033C00681911 /* CarDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetailsView.swift; sourceTree = "<group>"; };
+		9462271C3063033C00681911 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
+		9462271D3063033C00681911 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9462271E3063033C00681911 /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
+		9462271F3063033C00681911 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		946227203063033C00681911 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		946227213063033C00681911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946227223063033C00681911 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		946227233063033C00681911 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		946227243063033C00681911 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		946227253063033C00681911 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		946227263063033C00681911 /* OrganizationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModels.swift; sourceTree = "<group>"; };
+		946227273063033C00681911 /* OrganizationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationStore.swift; sourceTree = "<group>"; };
+		946227283063033C00681911 /* OrganizationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationsView.swift; sourceTree = "<group>"; };
+		946227293063033C00681911 /* OrgMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgMembersView.swift; sourceTree = "<group>"; };
+		9462272A3063033C00681911 /* ParkColApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkColApp.swift; sourceTree = "<group>"; };
+		9462272B3063033C00681911 /* ParkingTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingTicket.swift; sourceTree = "<group>"; };
+		9462272C3063033C00681911 /* ReportSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSheetView.swift; sourceTree = "<group>"; };
+		9462272D3063033C00681911 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9462272E3063033C00681911 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		9462272F3063033C00681911 /* TicketStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketStore.swift; sourceTree = "<group>"; };
+		946227303063033C00681911 /* VerifyEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
+		946227313063033C00681911 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		946227333063033C00681911 /* ParkColTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkColTests.swift; sourceTree = "<group>"; };
+		946227353063033C00681911 /* ParkColUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkColUITests.swift; sourceTree = "<group>"; };
+		946227363063033C00681911 /* ParkColUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkColUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		94EB7934308A785D00B99A50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9419C4B02FB4095200C5E094 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4BF2FB4095300C5E094 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4C92FB4095300C5E094 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9419C4AA2FB4095200C5E094 = {
+			isa = PBXGroup;
+			children = (
+				946227323063033C00681911 /* ValPark */,
+				946227343063033C00681911 /* ValParkTests */,
+				946227373063033C00681911 /* ValParkUITests */,
+				9419C4B42FB4095200C5E094 /* Products */,
+				94EB7934308A785D00B99A50 /* GoogleService-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		9419C4B42FB4095200C5E094 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9419C4B32FB4095200C5E094 /* ValPark.app */,
+				9419C4C22FB4095300C5E094 /* ValParkTests.xctest */,
+				9419C4CC2FB4095300C5E094 /* ValParkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		946227323063033C00681911 /* ValPark */ = {
+			isa = PBXGroup;
+			children = (
+				946227163063033C00681911 /* ActiveView.swift */,
+				946227173063033C00681911 /* AddTicketView.swift */,
+				946227183063033C00681911 /* AppSettings.swift */,
+				946227193063033C00681911 /* Assets.xcassets */,
+				9462271A3063033C00681911 /* AuthManager.swift */,
+				9462271B3063033C00681911 /* CarDetailsView.swift */,
+				9462271C3063033C00681911 /* CloudSyncManager.swift */,
+				9462271D3063033C00681911 /* ContentView.swift */,
+				9462271E3063033C00681911 /* FirebaseAuthManager.swift */,
+				9462271F3063033C00681911 /* GoogleService-Info.plist */,
+				946227203063033C00681911 /* HistoryView.swift */,
+				946227213063033C00681911 /* Info.plist */,
+				946227223063033C00681911 /* Item.swift */,
+				946227233063033C00681911 /* Localization.swift */,
+				946227243063033C00681911 /* MainTabView.swift */,
+				946227253063033C00681911 /* NotificationManager.swift */,
+				946227263063033C00681911 /* OrganizationModels.swift */,
+				946227273063033C00681911 /* OrganizationStore.swift */,
+				946227283063033C00681911 /* OrganizationsView.swift */,
+				946227293063033C00681911 /* OrgMembersView.swift */,
+				9462272A3063033C00681911 /* ParkColApp.swift */,
+				9462272B3063033C00681911 /* ParkingTicket.swift */,
+				9462272C3063033C00681911 /* ReportSheetView.swift */,
+				9462272D3063033C00681911 /* SettingsView.swift */,
+				9462272E3063033C00681911 /* SignUpView.swift */,
+				9462272F3063033C00681911 /* TicketStore.swift */,
+				946227303063033C00681911 /* VerifyEmailView.swift */,
+				946227313063033C00681911 /* WelcomeView.swift */,
+			);
+			path = ValPark;
+			sourceTree = "<group>";
+		};
+		946227343063033C00681911 /* ValParkTests */ = {
+			isa = PBXGroup;
+			children = (
+				946227333063033C00681911 /* ParkColTests.swift */,
+			);
+			path = ValParkTests;
+			sourceTree = "<group>";
+		};
+		946227373063033C00681911 /* ValParkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				946227353063033C00681911 /* ParkColUITests.swift */,
+				946227363063033C00681911 /* ParkColUITestsLaunchTests.swift */,
+			);
+			path = ValParkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9419C4B22FB4095200C5E094 /* ValPark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9419C4D62FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValPark" */;
+			buildPhases = (
+				9419C4AF2FB4095200C5E094 /* Sources */,
+				9419C4B02FB4095200C5E094 /* Frameworks */,
+				9419C4B12FB4095200C5E094 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ValPark;
+			packageProductDependencies = (
+			);
+			productName = ParkCol;
+			productReference = 9419C4B32FB4095200C5E094 /* ValPark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9419C4C12FB4095300C5E094 /* ValParkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9419C4D92FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValParkTests" */;
+			buildPhases = (
+				9419C4BE2FB4095300C5E094 /* Sources */,
+				9419C4BF2FB4095300C5E094 /* Frameworks */,
+				9419C4C02FB4095300C5E094 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9419C4C42FB4095300C5E094 /* PBXTargetDependency */,
+			);
+			name = ValParkTests;
+			packageProductDependencies = (
+			);
+			productName = ParkColTests;
+			productReference = 9419C4C22FB4095300C5E094 /* ValParkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9419C4CB2FB4095300C5E094 /* ValParkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9419C4DC2FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValParkUITests" */;
+			buildPhases = (
+				9419C4C82FB4095300C5E094 /* Sources */,
+				9419C4C92FB4095300C5E094 /* Frameworks */,
+				9419C4CA2FB4095300C5E094 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9419C4CE2FB4095300C5E094 /* PBXTargetDependency */,
+			);
+			name = ValParkUITests;
+			packageProductDependencies = (
+			);
+			productName = ParkColUITests;
+			productReference = 9419C4CC2FB4095300C5E094 /* ValParkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9419C4AB2FB4095200C5E094 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2650;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					9419C4B22FB4095200C5E094 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					9419C4C12FB4095300C5E094 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 9419C4B22FB4095200C5E094;
+					};
+					9419C4CB2FB4095300C5E094 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 9419C4B22FB4095200C5E094;
+					};
+				};
+			};
+			buildConfigurationList = 9419C4AE2FB4095200C5E094 /* Build configuration list for PBXProject "ValPark" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9419C4AA2FB4095200C5E094;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				946A21A53062E0600043760F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				946A21A63062E0990043760F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9419C4B42FB4095200C5E094 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9419C4B22FB4095200C5E094 /* ValPark */,
+				9419C4C12FB4095300C5E094 /* ValParkTests */,
+				9419C4CB2FB4095300C5E094 /* ValParkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9419C4B12FB4095200C5E094 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946227543063033C00681911 /* GoogleService-Info.plist in Resources */,
+				94EB7937308A785D00B99A50 /* GoogleService-Info.plist in Resources */,
+				946227553063033C00681911 /* Info.plist in Resources */,
+				946227563063033C00681911 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4C02FB4095300C5E094 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946227573063033C00681911 /* GoogleService-Info.plist in Resources */,
+				94EB7935308A785D00B99A50 /* GoogleService-Info.plist in Resources */,
+				946227583063033C00681911 /* Info.plist in Resources */,
+				946227593063033C00681911 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4CA2FB4095300C5E094 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946227923063033C00681911 /* GoogleService-Info.plist in Resources */,
+				94EB7936308A785D00B99A50 /* GoogleService-Info.plist in Resources */,
+				946227933063033C00681911 /* Info.plist in Resources */,
+				946227943063033C00681911 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9419C4AF2FB4095200C5E094 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946227383063033C00681911 /* AppSettings.swift in Sources */,
+				946227393063033C00681911 /* Item.swift in Sources */,
+				9462273A3063033C00681911 /* OrgMembersView.swift in Sources */,
+				9462273B3063033C00681911 /* OrganizationStore.swift in Sources */,
+				9462273C3063033C00681911 /* SettingsView.swift in Sources */,
+				9462273D3063033C00681911 /* CloudSyncManager.swift in Sources */,
+				9462273E3063033C00681911 /* AuthManager.swift in Sources */,
+				9462273F3063033C00681911 /* FirebaseAuthManager.swift in Sources */,
+				946227403063033C00681911 /* OrganizationModels.swift in Sources */,
+				946227413063033C00681911 /* TicketStore.swift in Sources */,
+				946227423063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */,
+				946227433063033C00681911 /* OrganizationsView.swift in Sources */,
+				946227443063033C00681911 /* ActiveView.swift in Sources */,
+				946227453063033C00681911 /* MainTabView.swift in Sources */,
+				946227463063033C00681911 /* SignUpView.swift in Sources */,
+				946227473063033C00681911 /* ContentView.swift in Sources */,
+				946227483063033C00681911 /* AddTicketView.swift in Sources */,
+				946227493063033C00681911 /* ParkColTests.swift in Sources */,
+				9462274A3063033C00681911 /* CarDetailsView.swift in Sources */,
+				9462274B3063033C00681911 /* HistoryView.swift in Sources */,
+				9462274C3063033C00681911 /* NotificationManager.swift in Sources */,
+				9462274D3063033C00681911 /* VerifyEmailView.swift in Sources */,
+				9462274E3063033C00681911 /* WelcomeView.swift in Sources */,
+				9462274F3063033C00681911 /* ParkColApp.swift in Sources */,
+				946227503063033C00681911 /* ParkingTicket.swift in Sources */,
+				946227513063033C00681911 /* Localization.swift in Sources */,
+				946227523063033C00681911 /* ReportSheetView.swift in Sources */,
+				946227533063033C00681911 /* ParkColUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4BE2FB4095300C5E094 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9462275A3063033C00681911 /* AppSettings.swift in Sources */,
+				9462275B3063033C00681911 /* Item.swift in Sources */,
+				9462275C3063033C00681911 /* OrgMembersView.swift in Sources */,
+				9462275D3063033C00681911 /* OrganizationStore.swift in Sources */,
+				9462275E3063033C00681911 /* SettingsView.swift in Sources */,
+				9462275F3063033C00681911 /* CloudSyncManager.swift in Sources */,
+				946227603063033C00681911 /* AuthManager.swift in Sources */,
+				946227613063033C00681911 /* FirebaseAuthManager.swift in Sources */,
+				946227623063033C00681911 /* OrganizationModels.swift in Sources */,
+				946227633063033C00681911 /* TicketStore.swift in Sources */,
+				946227643063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */,
+				946227653063033C00681911 /* OrganizationsView.swift in Sources */,
+				946227663063033C00681911 /* ActiveView.swift in Sources */,
+				946227673063033C00681911 /* MainTabView.swift in Sources */,
+				946227683063033C00681911 /* SignUpView.swift in Sources */,
+				946227693063033C00681911 /* ContentView.swift in Sources */,
+				9462276A3063033C00681911 /* AddTicketView.swift in Sources */,
+				9462276B3063033C00681911 /* ParkColTests.swift in Sources */,
+				9462276C3063033C00681911 /* CarDetailsView.swift in Sources */,
+				9462276D3063033C00681911 /* HistoryView.swift in Sources */,
+				9462276E3063033C00681911 /* NotificationManager.swift in Sources */,
+				9462276F3063033C00681911 /* VerifyEmailView.swift in Sources */,
+				946227703063033C00681911 /* WelcomeView.swift in Sources */,
+				946227713063033C00681911 /* ParkColApp.swift in Sources */,
+				946227723063033C00681911 /* ParkingTicket.swift in Sources */,
+				946227733063033C00681911 /* Localization.swift in Sources */,
+				946227743063033C00681911 /* ReportSheetView.swift in Sources */,
+				946227753063033C00681911 /* ParkColUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9419C4C82FB4095300C5E094 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946227763063033C00681911 /* AppSettings.swift in Sources */,
+				946227773063033C00681911 /* Item.swift in Sources */,
+				946227783063033C00681911 /* OrgMembersView.swift in Sources */,
+				946227793063033C00681911 /* OrganizationStore.swift in Sources */,
+				9462277A3063033C00681911 /* SettingsView.swift in Sources */,
+				9462277B3063033C00681911 /* CloudSyncManager.swift in Sources */,
+				9462277C3063033C00681911 /* AuthManager.swift in Sources */,
+				9462277D3063033C00681911 /* FirebaseAuthManager.swift in Sources */,
+				9462277E3063033C00681911 /* OrganizationModels.swift in Sources */,
+				9462277F3063033C00681911 /* TicketStore.swift in Sources */,
+				946227803063033C00681911 /* ParkColUITestsLaunchTests.swift in Sources */,
+				946227813063033C00681911 /* OrganizationsView.swift in Sources */,
+				946227823063033C00681911 /* ActiveView.swift in Sources */,
+				946227833063033C00681911 /* MainTabView.swift in Sources */,
+				946227843063033C00681911 /* SignUpView.swift in Sources */,
+				946227853063033C00681911 /* ContentView.swift in Sources */,
+				946227863063033C00681911 /* AddTicketView.swift in Sources */,
+				946227873063033C00681911 /* ParkColTests.swift in Sources */,
+				946227883063033C00681911 /* CarDetailsView.swift in Sources */,
+				946227893063033C00681911 /* HistoryView.swift in Sources */,
+				9462278A3063033C00681911 /* NotificationManager.swift in Sources */,
+				9462278B3063033C00681911 /* VerifyEmailView.swift in Sources */,
+				9462278C3063033C00681911 /* WelcomeView.swift in Sources */,
+				9462278D3063033C00681911 /* ParkColApp.swift in Sources */,
+				9462278E3063033C00681911 /* ParkingTicket.swift in Sources */,
+				9462278F3063033C00681911 /* Localization.swift in Sources */,
+				946227903063033C00681911 /* ReportSheetView.swift in Sources */,
+				946227913063033C00681911 /* ParkColUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9419C4C42FB4095300C5E094 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9419C4B22FB4095200C5E094 /* ValPark */;
+			targetProxy = 9419C4C32FB4095300C5E094 /* PBXContainerItemProxy */;
+		};
+		9419C4CE2FB4095300C5E094 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9419C4B22FB4095200C5E094 /* ValPark */;
+			targetProxy = 9419C4CD2FB4095300C5E094 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9419C4D42FB4095300C5E094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9419C4D52FB4095300C5E094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9419C4D72FB4095300C5E094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 9;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9419C4D82FB4095300C5E094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 9;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9419C4DA2FB4095300C5E094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelab.parkcol.ParkColTests;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ValPark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ValPark";
+			};
+			name = Debug;
+		};
+		9419C4DB2FB4095300C5E094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelab.parkcol.ParkColTests;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ValPark.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ValPark";
+			};
+			name = Release;
+		};
+		9419C4DD2FB4095300C5E094 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelab.parkcol.ParkColUITests;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ParkCol;
+			};
+			name = Debug;
+		};
+		9419C4DE2FB4095300C5E094 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63QJB3M7Q6;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ParkCol/Info.plist;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thelab.parkcol.ParkColUITests;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.valpark.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ParkCol;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9419C4AE2FB4095200C5E094 /* Build configuration list for PBXProject "ValPark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9419C4D42FB4095300C5E094 /* Debug */,
+				9419C4D52FB4095300C5E094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9419C4D62FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValPark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9419C4D72FB4095300C5E094 /* Debug */,
+				9419C4D82FB4095300C5E094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9419C4D92FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValParkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9419C4DA2FB4095300C5E094 /* Debug */,
+				9419C4DB2FB4095300C5E094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9419C4DC2FB4095300C5E094 /* Build configuration list for PBXNativeTarget "ValParkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9419C4DD2FB4095300C5E094 /* Debug */,
+				9419C4DE2FB4095300C5E094 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		946A21A53062E0600043760F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.19.2;
+			};
+		};
+		946A21A63062E0990043760F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+	};
+	rootObject = 9419C4AB2FB4095200C5E094 /* Project object */;
+}

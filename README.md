@@ -1,171 +1,243 @@
-# ParkCol
+# ValPark
 
-A native iOS app for valet parking services. Built with SwiftUI and SwiftData.
+A valet parking management app for iOS built with SwiftUI and Firebase.
 
 ---
 
 ## Overview
 
-ParkCol lets valet attendants check vehicles in and out, track parking status in real time, manage payments, and generate revenue reports — with full English/Spanish localization and optional Google Drive sync.
+ValPark lets valet teams create and manage parking tickets, track vehicle status in real time, and collaborate within shared organizations — all backed by Firebase Auth and Firestore.
+
+---
+
+## What Changed from ParkCol
+
+| Area | Before (ParkCol) | After (ValPark) |
+|---|---|---|
+| Auth | Google Sign-In only (no account required) | Firebase Auth — email/password + Google SSO |
+| Persistence | SwiftData (on-device) | Firestore (cloud, real-time) |
+| Multi-user | Single device | Organizations with role-based membership |
+| Settings sync | Google Drive App Data | Firestore (org data) |
+| Email verification | None | Required for email/password accounts |
+| Ticket ownership | Device-local | Per-org, keyed off Firebase UID |
 
 ---
 
 ## Features
 
-### Active Tickets
-- Live list of all currently parked vehicles
-- Real-time elapsed timer on every ticket card
-- Color-coded payment and status badges
-- Active ticket count shown in the navigation bar
-- Tap any ticket to open the full detail view
+### Authentication
+- **Email/Password** sign-up and sign-in with Firebase Auth
+- **Google Sign-In (SSO)** — one-tap sign-in via the GoogleSignIn SDK
+- **Email verification gate** — email/password users must verify before accessing the app; Google users skip this step (pre-verified by Google)
+- **Persistent sessions** — Firebase Auth state listener restores the session on launch automatically
 
-### Check-In Flow
-- Customer first name, last name, and phone number
-- Vehicle description (make, model, color)
-- Parking zone selector (zones are user-defined in Settings)
-- Payment timing: **Pay Before**, **Pay Half**, **Pay After**
-- Payment method: **Cash**, **Card**, **Neiki**, **Bancolombia Transfer**
-- Parking start and end time pickers
-- Dollar amount field
-- Up to 5 vehicle photos from camera or photo library
-- Optional notes (e.g. pre-existing damage)
-- Automatic push notification scheduling on check-in
+### Organizations
+- **Create an organization** with a globally unique name (enforced via a Firestore transaction on an `orgNames` lock collection — no duplicates possible)
+- **Join by name** — submit a join request; an admin must approve before access is granted
+- **Multi-org support** — belong to multiple organizations and switch between them
+- **Admin controls:**
+  - View the full member list and roles
+  - Add members directly by email (target must already have a ValPark account)
+  - Approve or deny pending join requests
+  - Promote/demote members between `admin` and `member` roles
+  - Remove members
+  - Last-admin guard — prevents removing or demoting the only admin
+  - Add and remove **parking zones** for the organization
+- Real-time Firestore listeners keep member list, join requests, and org data live across all devices
 
-### Ticket Lifecycle
-Tickets progress through a linear status pipeline:
+### Parking Tickets
+- Check in a vehicle: customer name, phone, vehicle description, parking zone, payment timing/method, amount, and notes
+- Ticket status lifecycle: **Parked → Car Requested → On The Way → Delivered / Cancelled**
+- **Active tickets** view with live elapsed timers and color-coded status/payment badges
+- **History** view — searchable list of all delivered and cancelled tickets for the current org
+- **Car details sheet** — full ticket info, status advancement, and edit capability
+- **PDF report** generation per ticket
 
-```
-Parked → Car Requested → On The Way → Delivered
-                                    ↘ Cancelled
-```
-
-The detail view shows a visual timeline with timestamps for check-in and delivery. Status can be advanced one step at a time or cancelled with a confirmation dialog.
-
-### History
-- Searchable list of all delivered and cancelled tickets
-- Search by customer name or vehicle description
-- Tap any record to review full details
-
-### Reports
-- Filter by parking zone (or all zones) and custom date/time range
-- Displays: total tickets, delivered count, cancelled count, and total revenue
-
-### Settings
-- Add and remove named parking zones
-- Language toggle: English / Español
-- App version and notification status info
+### Cloud & Real-Time Sync
+- All tickets stored in Firestore at `organizations/{orgId}/tickets/{ticketId}`
+- Org members see each other's tickets in real time with no manual refresh
 
 ### Notifications
-- **15-minute warning** before a ticket's expected end time
-- **Expiry alert** when parking time runs out
-- Notifications are cancelled automatically on check-out or cancellation
-- Bilingual notification text matches the current app language
+- Local push notification when a join request arrives (shown on admin devices)
+- Notification permission requested at first launch
 
-### Google Integration
-- Google Sign-In on the welcome screen
-- Settings (parking zones + language) sync to the user's private Google Drive App Data folder via the Drive v3 API
+### Localization
+- English and Spanish supported throughout
+- Language toggle on the sign-in screen and in Settings — no app restart required
 
 ---
 
-## Tech Stack
+## App Navigation
 
-| Layer | Technology |
+```
+Not signed in           → WelcomeView  (email/password or Google sign-in + sign-up link)
+Signed in, unverified   → VerifyEmailView  (email/password accounts only)
+Verified, no org        → OrganizationsView  (create or join an org)
+Verified + org member   → MainTabView  (Active | History | Settings)
+```
+
+---
+
+## Architecture
+
+| File | Role |
 |---|---|
-| UI | SwiftUI |
-| Persistence | SwiftData |
-| State management | Swift `@Observable` |
-| Notifications | UserNotifications |
-| Photos | PhotosUI |
-| Cloud sync | Google Drive API v3 |
-| Auth | Google Sign-In |
-| Minimum target | iOS 17 |
-| Language | Swift 5.9+ |
-
----
-
-## Project Structure
-
-```
-ParkCol/
-├── ParkColApp.swift          # App entry point, SwiftData container setup
-├── MainTabView.swift         # Root tab bar (Active / History / Settings)
-│
-├── Model
-│   ├── ParkingTicket.swift   # SwiftData model + enums (status, payment)
-│   └── Item.swift
-│
-├── Views
-│   ├── WelcomeView.swift     # Google Sign-In screen + language toggle
-│   ├── ActiveView.swift      # Live ticket list + TicketRowView + StatusBadge
-│   ├── AddTicketView.swift   # New ticket form + shared sub-views
-│   ├── CarDetailsView.swift  # Ticket detail, status advancement, TimelineCard
-│   ├── HistoryView.swift     # Completed/cancelled ticket search list
-│   ├── ReportSheetView.swift # Revenue report with date/zone filters
-│   └── SettingsView.swift    # Zone management, language, app info
-│
-└── Services
-    ├── AppSettings.swift         # Observable parking zone list (UserDefaults)
-    ├── AuthManager.swift         # Google Sign-In wrapper
-    ├── CloudSyncManager.swift    # Google Drive App Data sync
-    ├── Localization.swift        # LocalizationManager + EN/ES string tables
-    └── NotificationManager.swift # Schedule/cancel UNUserNotificationCenter reminders
-```
+| `ParkColApp.swift` | App entry point; `FirebaseApp.configure()`, environment injection, `RootView` auth router |
+| `FirebaseAuthManager.swift` | Firebase Auth wrapper — email/password + Google SSO, Firestore `users/{uid}` profile |
+| `OrganizationStore.swift` | Org CRUD, membership management, join-request flow, Firestore listeners |
+| `TicketStore.swift` | Ticket CRUD backed by Firestore |
+| `OrganizationModels.swift` | `UserProfile`, `Organization`, `Membership`, `JoinRequest` Codable structs |
+| `ParkingTicket.swift` | `ParkingTicket` Codable struct + `TicketStatus`, `PaymentTiming`, `PaymentMethod` enums |
+| `CloudSyncManager.swift` | Firestore path helpers and sync utilities |
+| `NotificationManager.swift` | Local notification scheduling and permission |
+| `Localization.swift` | `LocalizationManager` — in-app EN/ES switching backed by UserDefaults |
+| `WelcomeView.swift` | Sign-in screen (email/password form + Google button + language toggle) |
+| `SignUpView.swift` | Email/password account creation sheet |
+| `VerifyEmailView.swift` | Email verification gate with resend and reload |
+| `OrganizationsView.swift` | Onboarding — create or join an org |
+| `OrgMembersView.swift` | Admin member management, join-request approval |
+| `MainTabView.swift` | Root tab bar (Active / History / Settings) |
+| `ActiveView.swift` | Live ticket list with timers |
+| `AddTicketView.swift` | New ticket check-in form |
+| `CarDetailsView.swift` | Ticket detail, status advancement |
+| `HistoryView.swift` | Completed/cancelled ticket search |
+| `ReportSheetView.swift` | Revenue report with filters |
+| `SettingsView.swift` | Org info, language, sign-out |
 
 ---
 
 ## Data Model
 
-### `ParkingTicket` (SwiftData `@Model`)
+### `ParkingTicket`
 
 | Property | Type | Description |
 |---|---|---|
-| `id` | `UUID` | Unique identifier |
-| `customerFirstName` | `String` | Customer first name |
-| `customerLastName` | `String` | Customer last name |
-| `phoneNumber` | `String` | Contact phone number |
+| `id` | `String` | UUID — also the Firestore document ID |
+| `customerFirstName/LastName` | `String` | Customer name |
+| `phoneNumber` | `String` | Contact phone |
 | `vehicle` | `String` | Vehicle description |
-| `parkingZone` | `String` | Zone where the car is parked |
+| `parkingZone` | `String` | Zone within the org |
 | `paymentTiming` | `PaymentTiming` | Pay Before / Pay Half / Pay After |
 | `paymentMethod` | `PaymentMethod` | Cash / Card / Neiki / Bancolombia Transfer |
 | `amount` | `Double` | Parking fee |
-| `notes` | `String` | Optional attendant notes |
+| `notes` | `String` | Attendant notes |
 | `status` | `TicketStatus` | Current lifecycle status |
 | `checkedInAt` | `Date` | Check-in timestamp |
 | `deliveredAt` | `Date?` | Delivery timestamp |
-| `expectedEndTime` | `Date?` | Used to schedule expiry notifications |
+| `expectedEndTime` | `Date?` | For notification scheduling |
+| `createdBy` | `String` | UID of the attendant who checked in the car |
+| `orgId` | `String` | Organization this ticket belongs to |
 
-### `TicketStatus`
+### `Organization`
 
-| Value | Color |
+| Property | Description |
 |---|---|
-| `parked` | Blue |
-| `carRequested` | Orange |
-| `onTheWay` | Yellow |
-| `delivered` | Green |
-| `cancelled` | Red |
+| `id` | UUID |
+| `name` | Display name |
+| `nameLower` | Lowercase — used for case-insensitive uniqueness |
+| `createdBy` | UID of the creator |
+| `parkingZones` | Array of zone name strings |
+| `myRole` | Transient — `.admin` or `.member` (populated from the membership document) |
+
+### Firestore Collections
+
+```
+users/{uid}
+orgNames/{nameLower}                          ← name uniqueness lock
+organizations/{orgId}
+organizations/{orgId}/members/{uid}
+organizations/{orgId}/joinRequests/{uid}
+organizations/{orgId}/tickets/{ticketId}
+```
 
 ---
 
-## Localization
+## Firebase Setup
 
-All UI strings are served through `LocalizationManager`, an `@Observable` class with built-in English and Spanish dictionaries. The active language is persisted in `UserDefaults` and can be changed at any time from the Welcome screen or Settings — no app restart required.
+### 1. Firebase Console
+
+1. Go to [console.firebase.google.com](https://console.firebase.google.com) and open (or create) your Firebase project.
+2. **Add an iOS app** — use your bundle ID (e.g. `com.yourname.ValPark`).
+3. Download `GoogleService-Info.plist` and drag it into Xcode under the `ValPark` target (check **Add to targets: ValPark**).
+4. Under **Authentication → Sign-in method**, enable:
+   - **Email/Password**
+   - **Google**
+5. Under **Firestore Database**, create a Firestore database.
+
+### 2. Google Sign-In URL Scheme
+
+The `REVERSED_CLIENT_ID` value from `GoogleService-Info.plist` must be registered as a URL scheme so Google's OAuth redirect works. It is already configured in `Info.plist`:
+
+```
+CFBundleURLTypes → GoogleSignIn → CFBundleURLSchemes:
+  com.googleusercontent.apps.14302625617-5hacp1nu2f898516vlf37a1gf4jrpmid
+```
+
+If you switch to a different Firebase project, replace this value with the `REVERSED_CLIENT_ID` from your new `GoogleService-Info.plist`.
+
+### 3. Firestore Index
+
+The org membership query uses a collection-group query that requires a composite index:
+
+| Collection group | Field | Order |
+|---|---|---|
+| `members` | `uid` | Ascending |
+
+On first run against a new project, Firestore returns an error with a direct link to create the index in one click.
+
+### 4. Firestore Security Rules (starter)
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{uid} {
+      allow read, write: if request.auth.uid == uid;
+    }
+
+    match /orgNames/{name} {
+      allow read, write: if request.auth != null;
+    }
+
+    match /organizations/{orgId} {
+      allow read: if request.auth != null &&
+        exists(/databases/$(database)/documents/organizations/$(orgId)/members/$(request.auth.uid));
+      allow write: if request.auth != null;
+
+      match /members/{uid} {
+        allow read, write: if request.auth != null;
+      }
+
+      match /joinRequests/{uid} {
+        allow read, write: if request.auth != null;
+      }
+
+      match /tickets/{ticketId} {
+        allow read, write: if request.auth != null &&
+          exists(/databases/$(database)/documents/organizations/$(orgId)/members/$(request.auth.uid));
+      }
+    }
+  }
+}
+```
 
 ---
 
-## Cloud Sync
+## Package Dependencies
 
-Settings (parking zones and language preference) are stored as a single JSON file (`parkcol_settings.json`) in the user's Google Drive **App Data** folder. This folder is private to the app and not visible in the user's Drive. Sync is triggered manually from the Settings screen after signing in with Google.
+| Package | Purpose |
+|---|---|
+| Firebase (FirebaseAuth, FirebaseFirestore) | Auth and real-time database |
+| GoogleSignIn | Google SSO |
+| GTMSessionFetcher | HTTP transport (Firebase transitive dependency) |
+| AppCheck | Firebase App Check |
+| GoogleAppMeasurement | Analytics |
 
 ---
 
 ## Requirements
 
-- Xcode 15 or later
-- iOS 17 or later
-- A Google Cloud project with the Drive API and Sign-In SDK configured (for cloud sync features)
-
----
-
-## Build
-
-Open `ParkCol.xcodeproj` in Xcode, select a simulator or connected device running iOS 17+, and press **Run**.
+- iOS 17+
+- Xcode 16+
+- A Firebase project with Authentication (Email/Password + Google) and Firestore enabled

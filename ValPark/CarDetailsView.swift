@@ -1,9 +1,8 @@
 import SwiftUI
-import SwiftData
 
 struct CarDetailsView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)             private var dismiss
+    @Environment(TicketStore.self)      private var ticketStore
     @Environment(LocalizationManager.self) private var lm
     let ticket: ParkingTicket
 
@@ -111,8 +110,7 @@ struct CarDetailsView: View {
         .confirmationDialog(lm["details.cancel_confirm"],
                             isPresented: $showCancelConfirm, titleVisibility: .visible) {
             Button(lm["details.cancel_ticket"], role: .destructive) {
-                ticket.status = .cancelled
-                try? modelContext.save()
+                ticketStore.cancel(ticket: ticket)
                 dismiss()
             }
             Button(lm["details.keep"], role: .cancel) {}
@@ -129,20 +127,19 @@ struct CarDetailsView: View {
 
     private func advanceStatus() {
         switch ticket.status {
-        case .parked:       ticket.status = .carRequested
-        case .carRequested: ticket.status = .onTheWay
+        case .parked:       ticketStore.updateStatus(ticketId: ticket.id, status: .carRequested)
+        case .carRequested: ticketStore.updateStatus(ticketId: ticket.id, status: .onTheWay)
         default: break
         }
-        try? modelContext.save()
     }
 
     private func checkOutVehicle() {
-        ticket.status = .delivered
-        ticket.deliveredAt = Date()
-        try? modelContext.save()
+        ticketStore.checkOut(ticket: ticket)
         dismiss()
     }
 }
+
+// MARK: - TimelineCard (unchanged)
 
 struct TimelineCard: View {
     let ticket: ParkingTicket
